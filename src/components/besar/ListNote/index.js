@@ -2,17 +2,18 @@ import React from "react";
 import { Text, Pressable, Box, VStack, HStack, Heading } from "@gluestack-ui/themed";
 import { IconDelete, IconEdit } from "../../../assets";
 import { useNavigation } from "@react-navigation/native";
+import { deleteNote } from "../../../actions/AuthAction";
 
 const ListNote = ({ judul, isi, tanggal, status, category, noteId }) => {
     const navigation = useNavigation();
 
     const handleEditClick = () => {
         navigation.navigate("EditNote", {
-            judul,
-            isi,
-            category,
-            status,
-            noteId,
+        judul,
+        isi,
+        category,
+        status,
+        noteId,
         });
     };
 
@@ -57,18 +58,18 @@ const ListNote = ({ judul, isi, tanggal, status, category, noteId }) => {
                     mt={"$3"}
                 >
                     <Text color="$white" fontWeight="$bold">
-                    {status}
+                        {status}
                     </Text>
                 </Box>
             </VStack>
             <HStack>
-                <Pressable onPress={handleEditClick}>
-                    <IconEdit />
-                </Pressable>
-                <Pressable onPress={handleDeleteClick}>
-                    <IconDelete />
-                </Pressable>
-            </HStack>
+            <Pressable onPress={handleEditClick}>
+                <IconEdit />
+            </Pressable>
+            <Pressable onPress={handleDeleteClick}>
+                <IconDelete />
+            </Pressable>
+        </HStack>
         </Box>
     );
 };
